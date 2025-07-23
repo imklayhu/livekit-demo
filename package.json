@@ -1,0 +1,37 @@
+{
+  "name": "livekit-demo",
+  "version": "1.0.0",
+  "description": "LiveKit Demo Application",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "dev:https": "concurrently \"npm run server\" \"npm run client:https\"",
+    "dev:lan": "concurrently \"npm run server\" \"npm run client:lan\"",
+    "dev:proxy": "concurrently \"npm run server\" \"npm run client\" \"npm run proxy\"",
+    "server": "node server/index.js",
+    "client": "cd client && npm start",
+    "client:https": "cd client && HTTPS=true SSL_CRT_FILE=../ssl/cert-ip.pem SSL_KEY_FILE=../ssl/key-ip.pem npm start",
+    "client:lan": "cd client && HOST=0.0.0.0 npm start",
+    "proxy": "node proxy-server.js",
+    "build": "cd client && npm run build",
+    "install-all": "npm install && cd client && npm install"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "livekit-server-sdk": "^1.2.0"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "http-proxy-middleware": "^3.0.5"
+  },
+  "keywords": [
+    "livekit",
+    "video",
+    "audio",
+    "real-time"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
